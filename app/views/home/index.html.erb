@@ -10,12 +10,30 @@ $(document).ready(function (){
 });
 
 function table(){
+	if (current_id >=100)
+		return; 
 	current_id = current_id + 1;
 	$.get("/home/retRows?id="+current_id, function(data) {
-        $("#demo").html(JSON.stringify(data));
+		var row = "<tr>"
+				 	+ "<td>" + data[0].primary_k + "</td>"
+				 	+ "<td>" + data[0].Title + "</td>"
+				 	+ "<td>" + data[0].Year + "</td>"
+					+ "</tr>";
+        if(current_id>=21) {
+        	$("#mytable tr:nth-child(2)").remove();	
+        }
+        $("#mytable tr:last").after(row);
     });
 }
 
 </script>
-<div id="demo" style="width: 500px; height: 400px;"> lskdfjlkasdjlkfas djlkfsaj dlkf </div>
+
+<table id="mytable">
+	<tr>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Year</th>
+	</tr>
+</table>
+
 </html>
