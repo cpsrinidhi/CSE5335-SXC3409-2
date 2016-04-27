@@ -1,0 +1,21 @@
+<html>
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+<script type="text/javascript">
+
+var current_id = 0;
+
+$(document).ready(function (){    
+	setInterval(table, 500);
+});
+
+function table(){
+	current_id = current_id + 1;
+	$.get("/home/retRows?id="+current_id, function(data) {
+        $("#demo").html(JSON.stringify(data));
+    });
+}
+
+</script>
+<div id="demo" style="width: 500px; height: 400px;"> lskdfjlkasdjlkfas djlkfsaj dlkf </div>
+</html>
